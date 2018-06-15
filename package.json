@@ -1,0 +1,55 @@
+{
+  "name": "mocoolka-fs",
+  "version": "0.1.7",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "fastspeeed@gmail.com",
+  "engines": {
+    "node": ">= 4"
+  },
+  "scripts": {
+    "reinstall": "rm -rf node_modules/ && yarn install",
+    "clean": "rm -rf lib/ coverage/ ",
+    "lint": "tslint -p './tsconfig.json'",
+    "lint:fix": "tslint -p ./tsconfig.json --fix",
+    "test": "jest",
+    "test:watch": "jest --watch ./src",
+    "build": "rm -rf lib/ && tsc",
+    "precommit": "npm run lint",
+    "prepush": "npm run test",
+    "prepublishOnly": "npm run clean && npm run reinstall && npm run lint  && npm run test && npm run build",
+    "coverage": "rimraf coverage && jest --config jest.config.json --coverage"
+  },
+  "dependencies": {
+    "mocoolka-fp": "^0.1.8"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.1.0",
+    "@types/node": "^10.3.3",
+    "jest": "^23.1.0",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^22.4.6",
+    "ts-node": "^5.0.1",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2",
+    "typings-checker": "^2.0.0"
+  },
+  "keywords": [
+    "mocoolka",
+    "typescript",
+    "fs",
+    "functional-programming"
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(./src/*|\\.(test|spec))\\.(ts|tsx)$"
+  },
+  "license": "MIT"
+}
