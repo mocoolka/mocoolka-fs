@@ -16,9 +16,33 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@types/events@*":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
+
+"@types/glob@^5.0.35":
+  version "5.0.35"
+  resolved "https://registry.yarnpkg.com/@types/glob/-/glob-5.0.35.tgz#1ae151c802cece940443b5ac246925c85189f32a"
+  dependencies:
+    "@types/events" "*"
+    "@types/minimatch" "*"
+    "@types/node" "*"
+
 "@types/jest@^23.1.0":
   version "23.1.0"
   resolved "http://registry.npm.taobao.org/@types/jest/download/@types/jest-23.1.0.tgz#8054dd838ba23dc331794d26456b86c7e50bf0f6"
+
+"@types/lodash@^4.14.110":
+  version "4.14.110"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.110.tgz#fb07498f84152947f30ea09d89207ca07123461e"
+
+"@types/minimatch@*":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
+
+"@types/node@*":
+  version "10.3.6"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.6.tgz#ea8aab9439b59f40d19ec5f13b44642344872b11"
 
 "@types/node@^10.3.3":
   version "10.3.3"
@@ -2328,10 +2352,11 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mocoolka-fp@^0.1.8:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/mocoolka-fp/-/mocoolka-fp-0.1.8.tgz#fc3c57b51261f032a851c73237f118ed5a28d293"
+mocoolka-fp@^0.1.15:
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/mocoolka-fp/-/mocoolka-fp-0.1.15.tgz#5a424385130f19a4e5521ba07f1980cc293a39c2"
   dependencies:
+    "@types/lodash" "^4.14.110"
     fp-ts "^1.6.2"
     io-ts "^1.1.5"
     io-ts-codegen "^0.1.7"

@@ -21,9 +21,11 @@
     "coverage": "rimraf coverage && jest --config jest.config.json --coverage"
   },
   "dependencies": {
-    "mocoolka-fp": "^0.1.8"
+    "glob": "^7.1.2",
+    "mocoolka-fp": "^0.1.15"
   },
   "devDependencies": {
+    "@types/glob": "^5.0.35",
     "@types/jest": "^23.1.0",
     "@types/node": "^10.3.3",
     "jest": "^23.1.0",
