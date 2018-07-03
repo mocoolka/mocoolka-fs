@@ -1,7 +1,7 @@
 import {
     statSync, pathResolve, readDirSync, directoryExistSync, fileExistSync,
     createDirNotExistSync, writeFileWithStringSync, unlinkSync, rmdirSync,
-    readFileAsStringSync, isSubPath, filesSync
+    readFileAsStringSync, isSubPath, filesSync,rmdirAllSync
 } from '../sync';
 import * as path from 'path';
 import { tryCatch } from 'mocoolka-fp/lib/Exception';
@@ -33,9 +33,15 @@ describe('fs', () => {
             expect(directoryExistSync(pathResolve(__dirname)('test')).run()).toEqual(true);
             expect(directoryExistSync(pathResolve(__dirname)('test2')).run()).toEqual(false);
         });
+        
         it('createDirNotExist && rmdir', () => {
-            expect(createDirNotExistSync(pathResolve(__dirname)('test1')).run()).toBeUndefined();
-            expect(rmdirSync(path.resolve(__dirname, 'test1')).run()).toBeUndefined();
+            expect(createDirNotExistSync(path.resolve(__dirname,'test2')).run()).toBeUndefined();
+            expect(rmdirSync(path.resolve(__dirname, 'test2')).run()).toBeUndefined();
+        });
+        it('createDirNotExist && rmdirAllSync', () => {
+            
+            expect(createDirNotExistSync(path.resolve(__dirname,'test1','test1','test2')).run()).toBeUndefined();
+            expect(rmdirAllSync(path.resolve(__dirname, 'test1')).run()).toBeUndefined();
         });
     });
     describe('path', () => {
@@ -46,9 +52,9 @@ describe('fs', () => {
             expect(fileExistSync(path.resolve(__dirname, 'test', 'deleteDirExist1.js')).run()).toEqual(false);
         });
         it('writeFileWithString && unlink', () => {
-            expect(writeFileWithStringSync('temp.txt', '123')(path.resolve(__dirname, 'test3')).run()).toBeUndefined();
-            expect(unlinkSync('temp.txt')(path.resolve(__dirname, 'test3')).run()).toBeUndefined();
-            expect(rmdirSync(path.resolve(__dirname, 'test3')).run()).toBeUndefined();
+            expect(writeFileWithStringSync(path.resolve(__dirname, 'test4'),'temp.txt')('123').run()).toBeUndefined();
+            expect(unlinkSync('temp.txt')(path.resolve(__dirname, 'test4')).run()).toBeUndefined();
+            expect(rmdirSync(path.resolve(__dirname, 'test4')).run()).toBeUndefined();
         });
         it('readFileAsString', () => {
             expect(readFileAsStringSync('a.txt')(path.resolve(__dirname, 'test')).run()).toEqual('123');

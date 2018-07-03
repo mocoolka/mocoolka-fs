@@ -1,6 +1,6 @@
 {
   "name": "mocoolka-fs",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "author": "fastspeeed@gmail.com",
@@ -22,14 +22,17 @@
   },
   "dependencies": {
     "glob": "^7.1.2",
-    "mocoolka-fp": "^0.1.15"
+    "mkdirp": "^0.5.1",
+    "mocoolka-fp": "^0.1.15",
+    "rimraf": "^2.6.2"
   },
   "devDependencies": {
     "@types/glob": "^5.0.35",
     "@types/jest": "^23.1.0",
+    "@types/mkdirp": "^0.5.2",
     "@types/node": "^10.3.3",
+    "@types/rimraf": "^2.0.2",
     "jest": "^23.1.0",
-    "rimraf": "^2.6.2",
     "ts-jest": "^22.4.6",
     "ts-node": "^5.0.1",
     "tslint": "^5.10.0",

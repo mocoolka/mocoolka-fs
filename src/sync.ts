@@ -1,11 +1,10 @@
-//tslint:disable
-// const mkDirP = require('mkdirp');
-// tslint:enable
+
+import mkDirP from 'mkdirp';
+import rimraf from 'rimraf';
 import { sync } from 'glob';
 import * as fs from 'fs';
 import * as pathR from 'path';
 import { IO } from 'mocoolka-fp/lib/IO';
-
 /**
  * path resolve
  * @param root
@@ -40,7 +39,7 @@ export const readDirSync = (path: string): IO<string[]> => {
  * @param {string} path - full path
  */
 export const createDirNotExistSync = (path: string): IO<void> =>
-  directoryExistSync(path).map(a => !a ? fs.mkdirSync(path) : undefined);
+  directoryExistSync(path).map(a => { if (!a) { mkDirP.sync(path); }  });
 
 /**
  * check directory that is existed
@@ -73,6 +72,12 @@ export const rmdirSync = (strPath: string): IO<void> => {
   });
 
 };
+export const rmdirAllSync = (strPath: string): IO<void> => {
+  return new IO(() => {
+    rimraf.sync(strPath);
+  });
+
+};
 
 /**
  * read a file return string content.
@@ -94,7 +99,7 @@ export const readFileAsPlainStringSync = (path: string): IO<string> => {
  * @param path
  * @param contents
  */
-export const writeFileWithStringSync = (filename: string, contents: string) => (path: string): IO<void> => {
+export const writeFileWithStringSync = ( path: string, filename: string) => (contents: string): IO<void> => {
   return createDirNotExistSync(path).map(() => fs.writeFileSync(
     pathR.resolve(path, filename), contents, { encoding: 'utf-8' }));
 };
